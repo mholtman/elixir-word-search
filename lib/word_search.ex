@@ -1,18 +1,6 @@
 defmodule WordSearch do
-  @moduledoc """
-  Documentation for WordSearch.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> WordSearch.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def find_letter(list_of_letters, subject) do
+    index = Enum.find_index(list_of_letters, fn(x) -> x == subject end)
+    {:ok, {0, index}}
   end
 end
