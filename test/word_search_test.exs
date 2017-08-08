@@ -9,4 +9,14 @@ defmodule WordSearchTest do
   test "can determine if letter exists later in a row" do
     assert WordSearch.find_letter(["a", "b", "c"], "b") == {:ok, {0, 1}}
   end
+
+  test "can find letter in two-dimensional array" do
+    assert WordSearch.find_letter([["a", "b", "c"],
+                                  ["d", "e", "f"],
+                                  ["g", "h", "i"]], "e") == {:ok, {1, 1}}
+  end
+  test "can find letter in 2x2 two-dimensional array" do
+    assert WordSearch.find_letter([["a", "b"],
+                                  ["c", "d"]], "d") == {:ok, {1, 1}}
+  end
 end
