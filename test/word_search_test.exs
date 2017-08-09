@@ -20,4 +20,11 @@ defmodule WordSearchTest do
     assert WordSearch.find_letter([["a", "a"],
                                   ["b", "c"]], "a") == {:ok, [{0, 0}, {0,1}]}
   end
+
+  test "can find western neighbor" do
+    assert WordSearch.find_neighbor([["a", "b", "c"],
+                                  ["d", "e", "f"],
+                                  ["g", "h", "i"]], "e", :west)
+                                  == {:ok, {:west, "d"}}
+  end
 end

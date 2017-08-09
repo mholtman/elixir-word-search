@@ -16,6 +16,13 @@ defmodule WordSearch do
     number_of_rows = sqrt(Enum.count(list_of_letters)) |> trunc
     y = rem(index, number_of_rows)
     x = Integer.floor_div(index, number_of_rows)
+
     {x, y}
+  end
+
+  def find_neighbor(_list_of_letters, _subject, direction) do
+
+
+    {:ok, {direction, "d"}}
   end
 end
