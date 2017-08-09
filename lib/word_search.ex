@@ -8,8 +8,6 @@ defmodule WordSearch do
       |> Enum.filter(fn {x, _} -> x == subject end)
       |> Enum.map(fn {_, i} -> i end)
       |> Enum.map(fn(x) -> determine_coordinates(flattened_list, x) end)
-      |> Enum.reduce([], fn(x, acc) -> [ x | acc ] end)
-      |> Enum.reverse
 
     {:ok, coordinates}
   end
