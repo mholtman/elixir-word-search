@@ -20,9 +20,14 @@ defmodule WordSearch do
     {x, y}
   end
 
-  def find_neighbor(_list_of_letters, _subject, direction) do
+  def find_neighbor(list_of_letters, subject, direction) do
+    flattened_list = List.flatten(list_of_letters)
+    index_of_subject = Enum.find_index(flattened_list, fn(x) -> x == subject end)
 
+    case direction do
+      :west -> {:ok, {direction, Enum.fetch(flattened_list, index_of_subject - 1) |> elem(1)}}
+      :east -> {:ok, {direction, Enum.fetch(flattened_list, index_of_subject + 1) |> elem(1)}}
 
-    {:ok, {direction, "d"}}
+    end
   end
 end

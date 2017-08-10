@@ -27,4 +27,11 @@ defmodule WordSearchTest do
                                   ["g", "h", "i"]], "e", :west)
                                   == {:ok, {:west, "d"}}
   end
+
+  test "can find eastern neighbor" do
+    assert WordSearch.find_neighbor([["a", "b", "c"],
+                                  ["d", "e", "f"],
+                                  ["g", "h", "i"]], "e", :east)
+                                  == {:ok, {:east, "f"}}
+  end
 end
