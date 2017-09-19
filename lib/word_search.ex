@@ -1,6 +1,10 @@
 defmodule WordSearch do
   import :math, only: [sqrt: 1]
 
+  defmodule  WordPuzzle do
+    defstruct words: []
+  end
+
   def find_letter(list_of_letters, subject) do
     flattened_list = List.flatten(list_of_letters)
 
@@ -29,5 +33,15 @@ defmodule WordSearch do
       :east -> {:ok, {direction, Enum.fetch(flattened_list, index_of_subject + 1) |> elem(1)}}
 
     end
+  end
+
+  def parse_puzzle(path) do
+    list = path
+    |> File.read!
+    |> String.split("\n")
+    |> List.first
+    |> String.trim
+    |> String.split(",")
+    {:ok, %WordPuzzle{words: list}}
   end
 end

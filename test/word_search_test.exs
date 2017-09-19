@@ -2,6 +2,8 @@ defmodule WordSearchTest do
   use ExUnit.Case
   doctest WordSearch
 
+  alias WordSearch.WordPuzzle
+
   test "can determine if letter exists in row" do
     assert WordSearch.find_letter(["a"], "a") == {:ok, [{0, 0}]}
   end
@@ -33,5 +35,10 @@ defmodule WordSearchTest do
                                   ["d", "e", "f"],
                                   ["g", "h", "i"]], "e", :east)
                                   == {:ok, {:east, "f"}}
+  end
+
+  test "can parse words from file" do
+    assert WordSearch.parse_puzzle("test/sample_puzzles/mexican_food.txt") == {:ok, %WordPuzzle{words:
+["BURRITOS","ENCHILADAS","GUACAMOLE","QUESO","SALSA","TACOS","TORTILLA"]}}
   end
 end
