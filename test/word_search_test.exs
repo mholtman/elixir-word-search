@@ -38,7 +38,14 @@ defmodule WordSearchTest do
   end
 
   test "can parse words from file" do
-    assert WordSearch.parse_puzzle("test/sample_puzzles/mexican_food.txt") == {:ok, %WordPuzzle{words:
-["BURRITOS","ENCHILADAS","GUACAMOLE","QUESO","SALSA","TACOS","TORTILLA"]}}
+    expected_words = ["BURRITOS","ENCHILADAS","GUACAMOLE","QUESO","SALSA","TACOS","TORTILLA"]
+    {:ok, parsed_puzzle} = WordSearch.parse_puzzle("test/sample_puzzles/mexican_food.txt")
+    assert expected_words == parsed_puzzle.words
+  end
+
+  test "can parse letters from file into nested arrays" do
+    {:ok, word_puzzle} = WordSearch.parse_puzzle("test/sample_puzzles/mexican_food.txt")
+    expected_first_row = ["T","A","C","O","S","J","E","A","J","K","I","T","N","C","S"]
+    assert expected_first_row == hd(word_puzzle.letters)
   end
 end

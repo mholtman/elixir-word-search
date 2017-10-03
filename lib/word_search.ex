@@ -2,7 +2,7 @@ defmodule WordSearch do
   import :math, only: [sqrt: 1]
 
   defmodule  WordPuzzle do
-    defstruct words: []
+    defstruct words: [], letters: []
   end
 
   def find_letter(list_of_letters, subject) do
@@ -39,9 +39,16 @@ defmodule WordSearch do
     list = path
     |> File.read!
     |> String.split("\n")
+    
+    words = list
     |> List.first
     |> String.trim
     |> String.split(",")
-    {:ok, %WordPuzzle{words: list}}
+
+    letters = list
+    |> tl
+    |> Enum.map(fn(x) -> String.trim(x) |> String.split(",")  end)
+
+    {:ok, %WordPuzzle{words: words, letters: letters}}
   end
 end
