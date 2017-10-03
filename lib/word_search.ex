@@ -39,15 +39,9 @@ defmodule WordSearch do
     list = path
     |> File.read!
     |> String.split("\n")
-    
-    words = list
-    |> List.first
-    |> String.trim
-    |> String.split(",")
+    |> Enum.map(fn(x) -> String.trim(x) |> String.split(",") end)
 
-    letters = list
-    |> tl
-    |> Enum.map(fn(x) -> String.trim(x) |> String.split(",")  end)
+    [ words | letters] = list
 
     {:ok, %WordPuzzle{words: words, letters: letters}}
   end
