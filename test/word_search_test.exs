@@ -62,4 +62,12 @@ defmodule WordSearchTest do
                                   ["g", "h", "i"]], {0,0}))
 
   end
+
+  test "can get position of non-origin letter within grid" do
+    assert("f" == WordSearch.get_letter_at_position([["a", "b", "c"],
+                                  ["d", "e", "f"],
+                                  ["g", "h", "i"]], {2,1}))
+
+  
+  end
 end
