@@ -55,4 +55,11 @@ defmodule WordSearchTest do
       "A", "M", "Q", "V", "E"]
     assert expected_last_row == Enum.at(word_puzzle.letters, -1)
   end
+
+  test "can get position of letter within grid" do
+    assert("a" == WordSearch.get_letter_at_position([["a", "b", "c"],
+                                  ["d", "e", "f"],
+                                  ["g", "h", "i"]], {0,0}))
+
+  end
 end
