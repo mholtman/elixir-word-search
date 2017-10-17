@@ -15,6 +15,13 @@ defmodule WordSearch do
 
     {:ok, coordinates}
   end
+  
+  def get_letter_at_position(letter_grid, coordinate) do
+    {x, y} = coordinate
+    
+    Enum.at(letter_grid, y) 
+    |> Enum.at(x)
+  end
 
   defp determine_coordinates(list_of_letters, index) do
     number_of_rows = sqrt(Enum.count(list_of_letters)) |> trunc
